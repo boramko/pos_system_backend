@@ -11,9 +11,9 @@ const router = require("./routes/main.routes");
 const productRouter = require("./routes/product.routes"); 
 const paymentRouter = require("./routes/payment.routes");
 
-const path = require('path');
-const keyPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3-key.pem');
-const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
+// const path = require('path');
+// const keyPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3-key.pem');
+// const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
 
 
 var corsOptions = {
@@ -21,10 +21,10 @@ var corsOptions = {
 };
 
 
-const options = {
-    key: fs.readFileSync(keyPath),
-    cert: fs.readFileSync(certPath),
-};
+// const options = {
+//     key: fs.readFileSync(keyPath),
+//     cert: fs.readFileSync(certPath),
+// };
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
@@ -43,7 +43,6 @@ paymentRouter(app);
 const PORT = process.env.LOCALPORT || 8000;
 
 // Express 앱을 https 서버에 바인딩
-https.createServer(options, app).listen(PORT, () => {
-    console.log(options);
+https.createServer(app).listen(PORT, () => {
     console.log(`Server is running securely on port ${PORT}.`);
 });
