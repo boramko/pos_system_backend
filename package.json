@@ -9,5 +9,9 @@
     "moment-timezone": "^0.5.43",
     "mysql2": "^3.6.1",
     "sequelize": "^6.33.0"
+  },
+  "scripts": {
+    "build": "echo 'No build step'",
+    "start": "node src/server.js"
   }
 }
