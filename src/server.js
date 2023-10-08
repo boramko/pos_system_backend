@@ -17,7 +17,7 @@ const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
 
 
 var corsOptions = {
-  origin: `http://localhost:${process.env.LOCALPORT || 5173}`
+  origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 8000}`
 };
 
 
@@ -40,7 +40,7 @@ productRouter(app);
 paymentRouter(app);
 // app.use('/api', router);
 
-const PORT = process.env.LOCALPORT || 8080;
+const PORT = process.env.LOCALPORT || 8000;
 
 // Express 앱을 https 서버에 바인딩
 https.createServer(options, app).listen(PORT, () => {
