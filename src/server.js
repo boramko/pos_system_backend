@@ -15,11 +15,10 @@ const path = require('path');
 const keyPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3-key.pem');
 const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
 
-
 var corsOptions = {
-  origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 8000}`
+  origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 8000}`,
+  optionsSuccessStatus: 200,
 };
-
 
 const options = {
     key: fs.readFileSync(keyPath),
