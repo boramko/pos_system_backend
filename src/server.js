@@ -12,7 +12,8 @@ const paymentRouter = require("./routes/payment.routes");
 // CORS options - consider tightening this up for production use.
 var corsOptions = {
   // [!] Replace this with the exact origin in production!
-  origin: `${process.env.ALLOWFRONT_SERVER}`,
+  // origin: `${process.env.ALLOWFRONT_SERVER}`,
+  origin: '*',
   credentials: true,
   optionsSuccessStatus: 200,
 };
