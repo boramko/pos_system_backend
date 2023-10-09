@@ -1,21 +1,24 @@
-const fs = require('fs'); // fs 모듈을 불러옴
+const fs = require('fs');
 const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require('path');
 
 const app = express();
 
-// 경로가 절대 경로로 지정되어 있으니, 상대 경로나 정확한 경로를 사용해 주세요.
-const router = require("./routes/main.routes"); 
-const productRouter = require("./routes/product.routes"); 
+const router = require("./routes/main.routes");
+const productRouter = require("./routes/product.routes");
 const paymentRouter = require("./routes/payment.routes");
 
-const path = require('path');
+// HTTPS key files
+// [!] Ensure these paths and files are correct and have proper read permissions.
 const keyPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3-key.pem');
 const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
 
+// CORS options - consider tightening this up for production use.
 var corsOptions = {
+  // [!] Replace this with the exact origin in production!
   origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 8080}`,
   credentials: true,
   optionsSuccessStatus: 200,
@@ -26,28 +29,27 @@ const options = {
     cert: fs.readFileSync(certPath),
 };
 
+// Middleware
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// [!] Be cautious with db sync in production!
 const db = require("./models");
-
 db.sequelize.sync();
 
-console.log(app);
+// [!] Log details only as needed, especially in production.
+// console.log(app);
+
+// Routers
 router(app);
 productRouter(app);
 paymentRouter(app);
-// app.use('/api', router);
 
+// Port configuration
 const PORT = process.env.LOCALPORT || 8080;
 
-// Express 앱을 https 서버에 바인딩
+// HTTPS Server
 https.createServer(options, app).listen(PORT, () => {
     console.log(`Server is running securely on port ${PORT}.`);
-    response.setHeader('Access-Control-Allow-origin', `${process.env.ALLOWFRONT_SERVER}`); // 모든 출처(orogin)을 허용
-    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // 모든 HTTP 메서드 허용
-    response.setHeader('Access-Control-Allow-Credentials', 'true'); // 클라이언트와 서버 간에 쿠키 주고받기 허용
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end('ok');
 });
