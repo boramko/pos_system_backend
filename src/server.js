@@ -23,10 +23,6 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function(req,res) {
-  res.sendFile(__dirname + "/public/main.html")
-});
-
 // [!] Be cautious with db sync in production!
 const db = require("./models");
 db.sequelize.sync();
