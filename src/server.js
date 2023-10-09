@@ -19,7 +19,7 @@ const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
 // CORS options - consider tightening this up for production use.
 var corsOptions = {
   // [!] Replace this with the exact origin in production!
-  origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 3000}`,
+  origin: `${process.env.ALLOWFRONT_SERVER}`,
   credentials: true,
   optionsSuccessStatus: 200,
 };
