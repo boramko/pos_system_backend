@@ -17,6 +17,7 @@ const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
 
 var corsOptions = {
   origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 8000}`,
+  credentials: true,
   optionsSuccessStatus: 200,
 };
 
