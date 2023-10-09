@@ -14,7 +14,6 @@ var corsOptions = {
   // [!] Replace this with the exact origin in production!
   // origin: `${process.env.ALLOWFRONT_SERVER}`,
   origin: '*',
-  credentials: true,
   optionsSuccessStatus: 200,
 };
 
