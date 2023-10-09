@@ -51,6 +51,6 @@ https.createServer(options, app).listen(PORT, () => {
     response.writeHead(200, { 'Content-Type': 'text/plain' });
     response.end('ok');
 });
-httpServer.listen(PORT, () => {
+https.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
 });
