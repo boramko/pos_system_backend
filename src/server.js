@@ -16,7 +16,7 @@ const keyPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3-key.pem'
 const certPath = path.resolve(__dirname, '../pem/_wildcard.example.dev+3.pem');
 
 var corsOptions = {
-  origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 8000}`,
+  origin: `${process.env.ALLOWFRONT_SERVER}:${process.env.LOCALPORT || 3000}`,
   credentials: true,
   optionsSuccessStatus: 200,
 };
@@ -40,7 +40,7 @@ productRouter(app);
 paymentRouter(app);
 // app.use('/api', router);
 
-const PORT = process.env.LOCALPORT || 8000;
+const PORT = process.env.LOCALPORT || 3000;
 
 // Express 앱을 https 서버에 바인딩
 https.createServer(options, app).listen(PORT, () => {
