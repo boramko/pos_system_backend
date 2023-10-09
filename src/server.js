@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/host', function(req,res) {
+app.get('/', function(req,res) {
   res.sendFile(__dirname + "/public/main.html")
 })
 
