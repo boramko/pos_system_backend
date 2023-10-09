@@ -24,6 +24,7 @@ exports.signup = async function(req, res){
             token // 생성된 토큰을 응답에 포함
         });
     } catch (error) {
+        res.json({error})
         res.status(500).json('Server Error');
     }
 }

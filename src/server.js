@@ -10,12 +10,19 @@ const productRouter = require("./routes/product.routes");
 const paymentRouter = require("./routes/payment.routes");
 
 // CORS options - consider tightening this up for production use.
+// var corsOptions = {
+//   // [!] Replace this with the exact origin in production!
+//   // origin: `${process.env.ALLOWFRONT_SERVER}`,
+//   origin: '*',
+//   optionsSuccessStatus: 200,
+// };
+
 var corsOptions = {
-  // [!] Replace this with the exact origin in production!
-  // origin: `${process.env.ALLOWFRONT_SERVER}`,
-  origin: '*',
+  origin: 'https://pos-system-front.vercel.app',
+  credentials: true,
   optionsSuccessStatus: 200,
 };
+
 
 // Middleware
 app.use(cors(corsOptions));
