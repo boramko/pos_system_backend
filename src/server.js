@@ -45,4 +45,12 @@ const PORT = process.env.LOCALPORT || 8000;
 // Express 앱을 https 서버에 바인딩
 https.createServer(options, app).listen(PORT, () => {
     console.log(`Server is running securely on port ${PORT}.`);
+    response.setHeader('Access-Control-Allow-origin', `${process.env.ALLOWFRONT_SERVER}`); // 모든 출처(orogin)을 허용
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // 모든 HTTP 메서드 허용
+    response.setHeader('Access-Control-Allow-Credentials', 'true'); // 클라이언트와 서버 간에 쿠키 주고받기 허용
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.end('ok');
+});
+httpServer.listen(PORT, () => {
+  console.log(`Server is running at port ${PORT}`);
 });
